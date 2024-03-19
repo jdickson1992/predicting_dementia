@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  notebook:
+    build:
+      context: .
+    ports:
+      - 8888:8888
+      - 9090:9090
+    environment:
+      - PARALLEL_JOBS=4   #Used by GridSearch / RandomizedSearchCV: Number of jobs to run in parallel
+    command: jupyter notebook notebook.ipynb --ip 0.0.0.0 --no-browser --allow-root
